@@ -1,10 +1,11 @@
 module inochi2d.cffi.camera;
 import inochi2d.core.math;
 import inochi2d.cffi;
+import numem;
 import inmath;
 
 version(IN_DYNLIB):
-extern(C) export @nogc:
+extern(C) export:
 
 //
 //              CAMERA
@@ -24,11 +25,9 @@ struct in_camera_t;
 in_camera_t* in_camera_get_current() {
     import core.memory : GC;
 
-    return cast(in_camera_t*)assumeNoGC(() {
-        auto cam = new Camera2D();
-        GC.addRoot(cast(void*)cam);
-        return cam;
-    });
+    auto cam = new Camera2D();
+    GC.addRoot(cast(void*)cam);
+    return cast(in_camera_t*)cam;
 }
 
 /**
@@ -38,6 +37,7 @@ in_camera_t* in_camera_get_current() {
         cam = The camra object.
         pos = The position to set to.
 */
+@nogc
 void in_camera_set_position(in_camera_t* cam, in_vec2_t pos) {
     (cast(Camera2D)cam).position = reinterpret_cast!vec2(pos);
 }
@@ -50,6 +50,7 @@ void in_camera_set_position(in_camera_t* cam, in_vec2_t pos) {
     Returns:
         The camera's position.
 */
+@nogc
 in_vec2_t in_camera_get_position(in_camera_t* cam) {
     return reinterpret_cast!in_vec2_t((cast(Camera2D)cam).position);
 }
@@ -61,6 +62,7 @@ in_vec2_t in_camera_get_position(in_camera_t* cam) {
         cam = The camera object.
         rot = Rotation value (radians) to set to.
 */
+@nogc
 void in_camera_set_rotation(in_camera_t* cam, float rot) {
     (cast(Camera2D)cam).rotation = rot;
 }
@@ -74,31 +76,34 @@ void in_camera_set_rotation(in_camera_t* cam, float rot) {
     Returns:
         The camera's rotation.
 */
+@nogc
 float in_camera_get_rotation(in_camera_t* cam) {
     return (cast(Camera2D)cam).rotation;
 }
 /**
-    Sets the camera's zoom.
+    Sets the camera's scale.
 
     Params:
         cam = The camera object.
-        zoom = The zoom value to set to.
+        scale = The scale value to set to.
 */
-void in_camera_set_zoom(in_camera_t* cam, float zoom) {
-    (cast(Camera2D)cam).zoom = zoom;
+@nogc
+void in_camera_set_scale(in_camera_t* cam, float scale) {
+    (cast(Camera2D)cam).scale = scale;
 }
 
 /**
-    Gets the camera's zoom.
+    Gets the camera's scale.
 
     Params:
         cam = The camera object.
 
     Returns:
-        The camera's zoom.
+        The camera's scale.
 */
-void in_camera_get_zoom(in_camera_t* cam) {
-    return (cast(Camera2D)cam).zoom;
+@nogc
+float in_camera_get_zoom(in_camera_t* cam) {
+    return (cast(Camera2D)cam).scale;
 }
 
 
@@ -111,6 +116,7 @@ void in_camera_get_zoom(in_camera_t* cam) {
     Returns:
         The camera's center offset.
 */
+@nogc
 in_vec2_t in_camera_get_center_offset(in_camera_t* cam) {
     return reinterpret_cast!in_vec2_t((cast(Camera2D)cam).centerOffset);
 }
@@ -122,6 +128,7 @@ in_vec2_t in_camera_get_center_offset(in_camera_t* cam) {
         cam = The camera object.
         mat4 = The matrix to populate values with. Must have len 16
 */
+@nogc
 void in_camera_get_matrix(in_camera_t* cam, const(float)* mat4) {
     import core.stdc.string : memcpy;
     memcpy(cast(void*)mat4, (cast(Camera2D)cam).matrix.ptr, float.sizeof*16);
@@ -133,6 +140,7 @@ void in_camera_get_matrix(in_camera_t* cam, const(float)* mat4) {
     Params:
         cam = The camera to destroy.
 */
+@nogc
 void in_camera_destroy(in_camera_t* cam) {
     import core.memory : GC;
 

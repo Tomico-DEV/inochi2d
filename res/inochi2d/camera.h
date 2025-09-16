@@ -89,6 +89,29 @@ EXPORT_I2D void in_camera_set_rotation(in_camera_t* cam, float rot);
 EXPORT_I2D float in_camera_get_rotation(in_camera_t* cam);
 
 /**
+    Sets the camera's size.
+
+    Params:
+        cam = The camera object.
+        size = The size to set to.
+*/
+EXPORT_I2D void in_camera_set_size(in_camera_t* cam, in_vec2_t size);
+
+/**
+    Gets the camera's size.
+
+    Params:
+        cam = The camera object.
+    
+    Returns:
+        size = The camera's size.
+*/
+@nogc
+void in_camera_get_size(in_camera_t* cam) {
+    return reinterpret_cast!in_vec2_t((cast(Camera2D)cam).size);
+}
+
+/**
     Sets the camera's scale.
 
     Params:

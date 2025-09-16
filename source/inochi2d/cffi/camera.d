@@ -91,6 +91,33 @@ void in_camera_set_rotation(in_camera_t* cam, float rot) {
 float in_camera_get_rotation(in_camera_t* cam) {
     return (cast(Camera2D)cam).rotation;
 }
+
+/**
+    Sets the camera's size.
+
+    Params:
+        cam = The camera object.
+        size = The size to set to.
+*/
+@nogc
+void in_camera_set_size(in_camera_t* cam, in_vec2_t size) {
+    (cast(Camera2D)cam).size = reinterpret_cast!vec2(size);
+}
+
+/**
+    Gets the camera's size.
+
+    Params:
+        cam = The camera object.
+    
+    Returns:
+        size = The camera's size.
+*/
+@nogc
+in_vec2_t in_camera_get_size(in_camera_t* cam) {
+    return reinterpret_cast!in_vec2_t((cast(Camera2D)cam).size);
+}
+
 /**
     Sets the camera's scale.
 

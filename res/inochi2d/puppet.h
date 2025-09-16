@@ -2,8 +2,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "inochi2d.h"
-#include "render.h"
+#include "inochi2d/inochi2d.h"
+#include "inochi2d/render.h"
 
 #ifndef H_INOCHI2D_PUPPET
 #define H_INOCHI2D_PUPPET

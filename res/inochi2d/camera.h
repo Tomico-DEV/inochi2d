@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "inochi2d.h"
+#include "inochi2d/inochi2d.h"
 
 #ifndef H_INOCHI2D_CAMERA
 #define H_INOCHI2D_CAMERA

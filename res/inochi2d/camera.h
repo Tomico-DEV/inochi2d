@@ -81,24 +81,24 @@ EXPORT_I2D void in_camera_set_rotation(in_camera_t* cam, float rot);
 EXPORT_I2D float in_camera_get_rotation(in_camera_t* cam);
 
 /**
-    Sets the camera's zoom.
+    Sets the camera's scale.
 
     Params:
         cam = The camera object.
-        zoom = The zoom value to set to.
+        scale = The zoom value to set to.
 */
-EXPORT_I2D void in_camera_set_zoom(in_camera_t* cam, float zoom);
+EXPORT_I2D void in_camera_set_scale(in_camera_t* cam, float scale);
 
 /**
-    Gets the camera's zoom.
+    Gets the camera's scale.
 
     Params:
         cam = The camera object.
 
     Returns:
-        The camera's zoom.
+        The camera's scale.
 */
-EXPORT_I2D void in_camera_get_zoom(in_camera_t* cam);
+EXPORT_I2D void in_camera_get_scale(in_camera_t* cam);
 
 /**
     Gets the camera's center offset.

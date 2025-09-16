@@ -31,10 +31,21 @@ in_camera_t* in_camera_get_current() {
 }
 
 /**
+    Updates the camera.
+
+    Params:
+        cam = The camera object.
+*/
+@nogc
+void in_camera_update(in_camera_t* cam) {
+    (cast(Camera2D)cam).update();
+}
+
+/**
     Sets the camera's position
 
     Params:
-        cam = The camra object.
+        cam = The camera object.
         pos = The position to set to.
 */
 @nogc

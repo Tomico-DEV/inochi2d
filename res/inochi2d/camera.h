@@ -42,6 +42,14 @@ struct in_camera_t;
 EXPORT_I2D in_camera_t* in_camera_get_current();
 
 /**
+    Updates the camera.
+
+    Params:
+        cam = The camera object.
+*/
+EXPORT_I2D void in_camera_update(in_camera_t* cam);
+
+/**
     Sets the camera's position
 
     Params:

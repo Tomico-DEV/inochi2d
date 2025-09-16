@@ -2,8 +2,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "inochi2d.h"
 #include "render.h"
-#include "package.h"
 
 #ifndef H_INOCHI2D_PUPPET
 #define H_INOCHI2D_PUPPET
@@ -39,6 +39,9 @@ struct in_puppet_t;
     A texture cache.
 */
 struct in_texture_cache_t;
+/**
+    A parameter.
+*/
 struct in_parameter_t;
 
 /**

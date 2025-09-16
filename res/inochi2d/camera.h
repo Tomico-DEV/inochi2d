@@ -106,10 +106,7 @@ EXPORT_I2D void in_camera_set_size(in_camera_t* cam, in_vec2_t size);
     Returns:
         size = The camera's size.
 */
-@nogc
-void in_camera_get_size(in_camera_t* cam) {
-    return reinterpret_cast!in_vec2_t((cast(Camera2D)cam).size);
-}
+EXPORT_I2D in_vec2_t in_camera_get_size(in_camera_t* cam);
 
 /**
     Sets the camera's scale.
